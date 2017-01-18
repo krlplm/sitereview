@@ -30,13 +30,13 @@ optional arguments:
 Sample results, for a known-malicious domain:
 
 ```
-======================
-Blue Coat Site Review
-======================
+============
+Site Review
+============
 
-URL: http://brins.biz/
+URL: http://www.zenfolio.com/
 Last Time Rated/Reviewed:  > 7 days
-Category: Malicious Sources/Malnets
+Category: Media Sharing
 ```
 
 ###Python Requirements

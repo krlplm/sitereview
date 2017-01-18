@@ -50,7 +50,7 @@ def site(url):
     s.check_response(response)
     border = "=" * (len("BlueCoat Site Review") + 2)
 
-    #print "\n{0}\n{1}\n{0}\n".format(border, "Blue Coat Site Review")
+    print "\n{0}\n{1}\n{0}\n".format(border, "Site Review")
     print "URL: {}\n{}\nCategory: {}\n".format(
                                                               s.url,
                                                               s.date,
@@ -65,7 +65,7 @@ def main(lst):
     		s.check_response(response)
     		border = "=" * (len("BlueCoat Site Review") + 2)
 
-    		#print "\n{0}\n{1}\n{0}\n".format(border, "Blue Coat Site Review")
+    		print "\n{0}\n{1}\n{0}\n".format(border, "Site Review")
     		print "URL: {}\n{}\nCategory: {}\n".format(
                                                               s.url,
                                                               s.date,
