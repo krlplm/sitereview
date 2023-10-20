@@ -5,7 +5,7 @@ Blue Coat/Symantec Site Review Checker
 
 This script can be used without a Bluecoat/Symantec sitereview API. 
 
-Also, With limitations on scraping the Symantec's sitereview site, this script makes use of selenium framework to scrape the categorization details. 
+This script makes use of selenium framework to fetch the categorization details. 
 
 ## Pre-requisites:
 
