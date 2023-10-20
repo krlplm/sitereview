@@ -24,7 +24,7 @@ Most other package dependencies are by default available with the python install
 
 ## Usage
 
-Sitereview.py simply takes Optional Arguments, url or lst, and submits it to the Site Review service:
+Sitereview.py takes either of the Arguments, c/cmd or l/lst, and submits it to the Site Review
 
 ```
 How to Run:
