@@ -1,49 +1,59 @@
-# sitereview
-Blue Coat Site Review Checker (CLI)
+# Site Review
+Blue Coat/Symantec Site Review Checker
 
-###Description
+## Description
 
-Site Review can best be described by Blue Coat itself:
+This script can be used without a Bluecoat/Symantec sitereview API. 
 
-*"The purpose of Site Review is to allow Blue Coat customers to check the current categorization of WebPulse URL ratings and report sites that they believe are incorrectly categorized."*
+Also, With limitations on scraping the Symantec's sitereview site, this script makes use of selenium framework to scrape the categorization details. 
 
-https://sitereview.bluecoat.com/sitereview.jsp
+## Pre-requisites:
 
-This Python script focuses on the first portion, allowing Blue Coat customers to quickly query the Site Review service via the CLI. This script can be run stand-alone, or imported as a module to extend the functionality of another script.
+- Python 3.7+
+- Download Chrome Driver compatible with the Browser version you run from https://chromedriver.chromium.org/downloads
+  * Unzip and move to /usr/local/bin (MAC OS/Linux) 
+  * On Windows, you may place it in any location and configure the path to chromedriver.exe under config.py
+- For chrome versions 115 and newer, you will have to download the drivers from https://googlechromelabs.github.io/chrome-for-testing/#stable
 
-###Usage
+## Package Dependencies:
+
+- Install Selenium by running as below,  
+```pip install selenium```
+
+Most other package dependencies are by default available with the python installation.
+
+## Usage
 
 Sitereview.py simply takes Optional Arguments, url or lst, and submits it to the Site Review service:
 
 ```
-usage: sitereview.py [-h] [-u URL] [-l LST]
+How to Run:
+sitereview.py [-c] [-l]
 
-optional arguments:
-  -h, --help         show this help message and exit
-  -u URL, --url URL  Submit domain/URL to Blue Coat's Site Review
-  -l LST, --lst LST  include the list of URLs separated by new line specifying
-                     the absolute path
+Arguments:
+  -c cmd, --cmd <domain/ip>       Submit single domain/ip/url to Blue Coat's Site Review
+  -l lst, --lst <path_to_file>    Include the list of domains/ip addresses/URLs separated by new line specifying the absolute path
+  
+Examples:
+- python sitereview.py -c google.com
+- python sitereview.py -c 8.8.8.8
+- python sitereview.py -c https://www.test.com
+- python sitereview.py -l domains.txt
+
+Note: The list can be a combination of domains/ip addresses/URLs as well!
+
 ```
+## Results
+- The results are shown in the console and also written to the file results.csv
 
-###Results
+## Gotchas:
 
-Sample results, for a known-malicious domain:
+- In the event, the Site Review page prompts the captcha window, open up a new tab and enter the capctha manually.
+- Due to time crunch, I haven't handled Capctha in my code but definitely on the feature list
 
-```
-============
-Site Review
-============
+## Benchmarking:
 
-URL: http://www.zenfolio.com/
-Last Time Rated/Reviewed:  > 7 days
-Category: Media Sharing
-```
-
-###Python Requirements
-
-* argparse
-* bs4
-* json
-* requests
-* sys
+- Currently, I've tested like 200 domains in a list which are handled by the site review with out any issues. 
+- However, most of my runs have seen the captcha prompt in between 200-220.
+- Following the above hack may be of help but may impact 3-5 IOCs while you perform this.
 
